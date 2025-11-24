@@ -9,5 +9,5 @@ __pycache__/
 .venv/
 .env.example
 
-# Ignore the compiled Python files in __pycache__
-__pycache__/config.cpython-313.pyc
+# Ignore sensitive files like API keys
+start.ps1
