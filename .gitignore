@@ -8,3 +8,6 @@ __pycache__/
 .env
 .venv/
 .env.example
+
+# Ignore the compiled Python files in __pycache__
+__pycache__/config.cpython-313.pyc
