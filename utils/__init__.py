@@ -1,4 +1,4 @@
 from .config import settings
-from .prompts import InstagramPrompts, TikTokPrompts, YouTubePrompts
+from .prompts import GlobalPrompts
 
-__all__ = ["settings", "InstagramPrompts", "TikTokPrompts", "YouTubePrompts"]
+__all__ = ["settings", "GlobalPrompts"]

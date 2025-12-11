@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import instagram_router, tiktok_router, youtube_router
+from routes import content_router
 from utils.config import settings
 
 # Create FastAPI app
@@ -22,9 +22,7 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(instagram_router)
-app.include_router(tiktok_router)
-app.include_router(youtube_router)
+app.include_router(content_router)
 
 @app.get("/")
 async def root():
@@ -33,12 +31,12 @@ async def root():
         "message": "Social Media Content Generation API",
         "version": settings.API_VERSION,
         "docs": "/docs",
-        "platforms": ["Instagram", "TikTok", "YouTube"],
+        "platforms": "Any social platform (Instagram, LinkedIn, Pinterest, YouTube, TikTok, etc.)",
         "features": [
             "AI-powered captions",
-            "Hashtag generation",
-            "Content ideas",
-            "YouTube titles & descriptions"
+            "Platform-aware hashtags",
+            "Content idea brainstorming",
+            "Video titles, descriptions & tags for any platform"
         ]
     }
 
@@ -53,11 +51,3 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-
-    # To run the app, use the command:
-    # uvicorn main:app --host
-    # Make sure to activate your virtual environment first
-    # .venv\Scripts\activate (Windows)  or source .venv/bin/activate (Linux/Mac)
-    # Then access the docs at http://localhost:8000/docs
-    # http://localhost:8000/docs
-    

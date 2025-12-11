@@ -1,14 +1,14 @@
 # Social Media Content Generation API
 
-AI-powered FastAPI backend for generating social media content for Instagram, TikTok, and YouTube.
+AI-powered FastAPI backend for generating social media content for any platform (Instagram, TikTok, LinkedIn, Pinterest, YouTube, etc.).
 
 ## Features
 
 - 🤖 **AI-Powered Content Generation** using OpenAI GPT-4o-mini
-- 📸 **Instagram**: Captions, Hashtags, Content Ideas
-- 🎵 **TikTok**: Captions, Hashtags, Content Ideas
-- 🎥 **YouTube**: Titles, Descriptions, Tags, Content Ideas
-- 🚀 **Fast & Scalable** with FastAPI
+- 🌐 **Platform Agnostic**: supports any social or video platform
+- ✍️ **Captions & Ideas**: tone and length aware
+- #️⃣ **Hashtags & Tags**: SEO-friendly for each platform
+- 🎥 **Video Assets**: titles, descriptions, and tags for any video channel
 - 📚 **Interactive API Documentation** with Swagger UI
 
 ## Setup
@@ -59,30 +59,24 @@ Once the server is running, visit:
 
 ## API Endpoints
 
-### Instagram
-- `POST /api/instagram/caption` - Generate Instagram captions
-- `POST /api/instagram/hashtags` - Generate Instagram hashtags
-- `POST /api/instagram/content-ideas` - Generate Instagram content ideas
+All endpoints live under `/api/content` and accept a `platform` field so you can target anything from Instagram to Threads or future networks.
 
-### TikTok
-- `POST /api/tiktok/caption` - Generate TikTok captions
-- `POST /api/tiktok/hashtags` - Generate TikTok hashtags
-- `POST /api/tiktok/content-ideas` - Generate TikTok content ideas
-
-### YouTube
-- `POST /api/youtube/title` - Generate YouTube titles
-- `POST /api/youtube/description` - Generate YouTube descriptions
-- `POST /api/youtube/tags` - Generate YouTube tags
-- `POST /api/youtube/content-ideas` - Generate YouTube content ideas
+- `POST /api/content/caption` - Generate captions
+- `POST /api/content/hashtags` - Generate platform-aware hashtags
+- `POST /api/content/content-ideas` - Generate tailored content ideas
+- `POST /api/content/video/title` - Generate video titles
+- `POST /api/content/video/description` - Generate video descriptions
+- `POST /api/content/video/tags` - Generate video tags/keywords
 
 ## Example Usage
 
-### Generate Instagram Caption
+### Generate LinkedIn Caption
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/api/instagram/caption" \
+curl -X POST "http://127.0.0.1:8000/api/content/caption" \
   -H "Content-Type: application/json" \
   -d '{
+    "platform": "LinkedIn",
     "topic": "morning coffee routine",
     "tone": "casual",
     "length": "medium"
@@ -92,9 +86,10 @@ curl -X POST "http://127.0.0.1:8000/api/instagram/caption" \
 ### Generate TikTok Hashtags
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/api/tiktok/hashtags" \
+curl -X POST "http://127.0.0.1:8000/api/content/hashtags" \
   -H "Content-Type: application/json" \
   -d '{
+    "platform": "TikTok",
     "topic": "fitness motivation",
     "count": 10
   }'
@@ -103,9 +98,10 @@ curl -X POST "http://127.0.0.1:8000/api/tiktok/hashtags" \
 ### Generate YouTube Title
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/api/youtube/title" \
+curl -X POST "http://127.0.0.1:8000/api/content/video/title" \
   -H "Content-Type: application/json" \
   -d '{
+    "platform": "YouTube",
     "topic": "how to start a podcast",
     "style": "clickable"
   }'
@@ -123,9 +119,7 @@ curl -X POST "http://127.0.0.1:8000/api/youtube/title" \
 │   └── schemas.py         # Pydantic models
 ├── routes/
 │   ├── __init__.py
-│   ├── instagram.py       # Instagram endpoints
-│   ├── tiktok.py          # TikTok endpoints
-│   └── youtube.py         # YouTube endpoints
+│   └── content.py         # Unified content endpoints
 ├── services/
 │   ├── __init__.py
 │   ├── ai_service.py      # Gemini API integration

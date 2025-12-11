@@ -45,11 +45,12 @@ Once you run `uvicorn main:app --reload`, visit:
 
 Open http://127.0.0.1:8000/docs and try:
 
-1. Click on **POST /api/instagram/caption**
+1. Click on **POST /api/content/caption**
 2. Click **"Try it out"**
 3. Enter:
    ```json
    {
+     "platform": "Instagram",
      "topic": "coffee",
      "tone": "casual",
      "length": "short"
@@ -64,7 +65,8 @@ Open http://127.0.0.1:8000/docs and try:
 
 - **`.env`** - Contains your API key (gitignored, never commit this!)
 - **`start.ps1`** - Startup script (also has API key)
-- **`main.py`** - FastAPI application
+- **`main.py`** - FastAPI application entry point
+- **`routes/content.py`** - Unified platform-agnostic routes
 - **`README.md`** - Full documentation
 
 ---

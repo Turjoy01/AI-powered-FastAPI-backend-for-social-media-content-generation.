@@ -17,9 +17,8 @@ class Settings:
     AI-powered content generation API for social media platforms.
     
     Supports:
-    - Instagram (captions, hashtags, content ideas)
-    - TikTok (captions, hashtags, content ideas)
-    - YouTube (titles, descriptions, tags, content ideas)
+
+    All types of social media platforms (captions, hashtags, content ideas)
     """
     
     # CORS Settings
