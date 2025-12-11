@@ -140,3 +140,6 @@ curl -X POST "http://127.0.0.1:8000/api/content/video/title" \
 ## License
 
 MIT
+
+<img width="1168" height="916" alt="image" src="https://github.com/user-attachments/assets/89817137-871e-4c57-9f06-8a9f2f15c149" />
+
