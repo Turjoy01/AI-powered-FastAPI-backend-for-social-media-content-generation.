@@ -11,3 +11,6 @@ __pycache__/
 
 # Ignore sensitive files like API keys
 start.ps1
+*.key
+*.json
+*.config
